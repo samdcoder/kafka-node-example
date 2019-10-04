@@ -17,14 +17,6 @@ try {
   const Producer = kafka.Producer;
   const client = new kafka.KafkaClient("localhost:9092");
   var producer = new Producer(client);
-  console.log(kafka_topic);
-  let payloads = [
-    {
-      topic: kafka_topic,
-      messages: "HEY THERE!"
-    }
-  ];
-
   producer.on('ready', async function() {
     console.log('producer ready');
   });

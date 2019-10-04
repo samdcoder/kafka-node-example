@@ -11,7 +11,6 @@ app.listen(3005, function(){
 });
 
 app.post('/push-event', function(req,res){
-	console.log('hit / on server');
 	const message = req.body.message || "Default message";
 	pushEvent( [{
       topic: config.kafka_topic,
