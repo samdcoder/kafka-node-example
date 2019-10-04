@@ -5,11 +5,6 @@ const pushEvent = require('./producer.js').pushEvent;
 const config = require('./config')
 const io = require('socket.io').listen(http);
 
-function sendData(data) {
-	console.log('in sendData data => ', data);
-    io.emit('time', { time: data });
-}
-
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,7 +18,7 @@ app.get('/', function(req, res){
 })
 
 app.post('/push-event', function(req,res){
-	//fetch  from data source
+	// Todo fetch from data source and remove this
 	const message = req.body.message || "Default message";
 	pushEvent( [{
       topic: config.kafka_topic,
@@ -35,9 +30,5 @@ app.post('/push-event', function(req,res){
 
 app.post('/send-to-socket', function(req, res){
 	const data = req.body.key.value || "no data";
-	io.emit('time', { time: data });
+	io.emit('data', { data });
 })
-
-module.exports = {
-	sendData
-}
