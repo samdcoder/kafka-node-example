@@ -11,6 +11,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "kafka-node": "^4.1.3"
+    "kafka-node": "^4.1.3",
+    "socket.io": "^2.3.0"
   }
 }
